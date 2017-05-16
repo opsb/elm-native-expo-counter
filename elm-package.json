@@ -15,7 +15,7 @@
     },
     "dependency-sources": {
         "ohanhi/elm-native-ui": {
-            "url": "git@github.com:ohanhi/elm-native-ui",
+            "url": "https://github.com/ohanhi/elm-native-ui",
             "ref": "a0f365e5b4025808c07c20c6731ef392908076c2"
         }
     },
