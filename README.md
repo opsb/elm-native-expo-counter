@@ -4,7 +4,7 @@
 
 ```
 $ npm install -g create-react-native-app
-$ npm install -g elm-github-install
+$ npm install -g elm-github-install       # or: gem install elm_install
 $ npm install -g yarn                     # if you don't have yarn installed already
 $ elm-install               # on Windows: %appdata%\npm\elm-install
 $ yarn install              # on Windows: %appdata%\npm\yarn install

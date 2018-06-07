@@ -5,19 +5,13 @@
     "license": "BSD3",
     "native-modules": true,
     "source-directories": [
-        "src"
+        "src",
+        "elm-native-ui/src"
     ],
     "exposed-modules": [],
     "dependencies": {
         "elm-lang/core": "5.1.1 <= v < 6.0.0",
-        "elm-lang/html": "2.0.0 <= v < 3.0.0",
-        "alexandercampbell/elm-native-ui": "2.0.0 <= v < 3.0.0"
-    },
-    "dependency-sources": {
-        "alexandercampbell/elm-native-ui": {
-            "url": "https://github.com/alexandercampbell/elm-native-ui",
-            "ref": "64b97c5c736a8d67f1858808ce6d958b22a653c3"
-        }
+        "elm-lang/html": "2.0.0 <= v < 3.0.0"
     },
     "elm-version": "0.18.0 <= v < 0.19.0"
 }

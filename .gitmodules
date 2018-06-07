@@ -1,0 +1,3 @@
+[submodule "elm-native-ui"]
+	path = elm-native-ui
+	url = https://github.com/akavel/elm-native-ui
