@@ -4,11 +4,16 @@
 
 ```
 $ npm install -g create-react-native-app
-$ elm-install
-$ yarn install
-$ npm run build
+$ npm install -g elm-github-install
+$ npm install -g yarn                     # if you don't have yarn installed already
+$ elm-install               # on Windows: %appdata%\npm\elm-install
+$ yarn install              # on Windows: %appdata%\npm\yarn install
+$ npm run build             # on Windows: %appdata%\npm\elm-make src/Main.elm --output elm.js
 $ npm run start
 ```
+
+(In case of hash errors in `yarn install`, try deleting `yarn.lock`, running `yarn cache clean` and again
+`yarn install`.)
 
 Then install the react Expo app on iphone or android and use the QR code shown in your console to start the app
 
