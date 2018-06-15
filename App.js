@@ -11,5 +11,12 @@ MessageQueue.spy(info => {
   }
 });
 
+import { NativeModules } from 'react-native'
+NativeModules.DialogManagerAndroid.showAlert(
+  {title: 'hi raw'},
+  errorMessage => console.warn(errorMessage),
+  (action, buttonKey) => { false },
+);
+
 const Elm = require('./elm');
 export default Elm.Main.start();
