@@ -5,19 +5,13 @@
     "license": "BSD3",
     "native-modules": true,
     "source-directories": [
-        "src"
+        "src",
+        "elm-native-ui/src"
     ],
     "exposed-modules": [],
     "dependencies": {
         "elm-lang/core": "5.1.1 <= v < 6.0.0",
-        "elm-lang/html": "2.0.0 <= v < 3.0.0",
-        "ohanhi/elm-native-ui": "2.0.0 <= v < 3.0.0"
-    },
-    "dependency-sources": {
-        "ohanhi/elm-native-ui": {
-            "url": "https://github.com/ohanhi/elm-native-ui",
-            "ref": "a0f365e5b4025808c07c20c6731ef392908076c2"
-        }
+        "elm-lang/html": "2.0.0 <= v < 3.0.0"
     },
     "elm-version": "0.18.0 <= v < 0.19.0"
 }

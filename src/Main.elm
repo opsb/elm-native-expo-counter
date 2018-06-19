@@ -1,23 +1,28 @@
 module Main exposing (..)
 
+import Task
 import NativeUi as Ui exposing (Node)
 import NativeUi.Style as Style exposing (defaultTransform)
 import NativeUi.Elements as Elements exposing (..)
 import NativeUi.Events exposing (..)
 import NativeUi.Image as Image exposing (..)
+import NativeUi.Alert as Alert
 
 
 -- MODEL
 
 
 type alias Model =
-    Int
+    { n : Int
+    , failed : String
+    }
 
 
 model : Model
 model =
-    9000
-
+    { n = 9000
+    , failed = "ok"
+    }
 
 
 -- UPDATE
@@ -26,24 +31,44 @@ model =
 type Msg
     = Increment
     | Decrement
+    | Alert
+    | Alerted (Result String Bool)
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         Increment ->
-            ( model + 1, Cmd.none )
+            ( { model | n = model.n + 1 }, Cmd.none )
 
         Decrement ->
-            ( model - 1, Cmd.none )
+            ( { model | n = model.n - 1 }, Cmd.none )
 
+        Alert ->
+            let
+                cmd =
+                    Alert.alert "hello here!" "and there..." []
+                    |> Task.attempt Alerted
+                    -- Task.perform 1 2 (qalert "hi" "there")
+                    -- Task.perform FailedAlert -- Alerted <| 
+                    -- <| qalert "hello heres!" "aind deres..."
+                    -- Alert.alert "hello here!" "and there..." []
+                    -- |> Task.perform (\x -> FailedAlert x) -- (\b -> Alerted b)
+            in
+                ( model, cmd )
+
+        Alerted (Ok _) ->
+            ( { model | failed = "ok alerted" }, Cmd.none )
+
+        Alerted (Err err) ->
+            ( { model | failed = err }, Cmd.none )
 
 
 -- VIEW
 
 
 view : Model -> Node Msg
-view count =
+view model =
     let
         imageSource =
             { uri = "https://raw.githubusercontent.com/futurice/spiceprogram/master/assets/img/logo/chilicorn_no_text-128.png"
@@ -69,7 +94,7 @@ view count =
                     , Style.marginBottom 30
                     ]
                 ]
-                [ Ui.string ("Counter: " ++ toString count)
+                [ Ui.string ("Counter: " ++ toString model.n)
                 ]
             , Elements.view
                 [ Ui.style
@@ -81,6 +106,15 @@ view count =
                 [ button Decrement "#d33" "-"
                 , button Increment "#3d3" "+"
                 ]
+            , text
+                [ Ui.style
+                    [ Style.textAlign "center"
+                    , Style.marginBottom 30
+                    ]
+                ]
+                [ Ui.string ("err? : " ++ model.failed)
+                ]
+            , button Alert "#33d" "!"
             ]
 
 
